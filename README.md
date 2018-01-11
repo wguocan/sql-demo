@@ -3,15 +3,15 @@
 #### STEP 1: create the following 2 tables: EMPLOYEE(id, name, salary, department_id), DEPARTMENT(id, name)
 create table DEPARTMENT  
 ( id number(10) not null,  
-name VARCHAR2(50),  
-constraint DEPT_PK PRIMARY KEY(name)  
+name VARCHAR2(50) not null,  
+constraint DEPT_PK PRIMARY KEY(id)  
 );  
   
 create table EMPLOYEE  
 (id number(10) not null,  
 name VARCHAR2(50) not null,  
 salary number(10,2) not null,  
-department_id number(10),  
+department_id number(10) not null,  
 constraint emp_pk PRIMARY KEY(id),  
 constraint fk_dept FOREIGN KEY(department_id) references DEPARTMENT(ID)  
 );  
