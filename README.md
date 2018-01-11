@@ -40,4 +40,4 @@ select e.name, e.salary, d.name
     inner join (  
       select max(e.salary) as max_salary, d.name as dept_name  
         from EMPLOYEE e left join DEPARTMENT d on d.id=e.department_id  
-        group by d.name) g on d.name=g.dept_name and e.salary=g.max_salary;  
+        group by d.name) grouped on d.name=grouped.dept_name and e.salary=grouped.max_salary;  
