@@ -33,7 +33,10 @@ insert into EMPLOYEE values(8, 'CHRIS8', 800, 3);
   select max(e.salary) as max_salary, d.name as dept_name  
     from EMPLOYEE e left join DEPARTMENT d on d.id=e.department_id  
     group by d.name;  
-    
+Result:  
+    200 IT  
+    900 SALES
+    600 HR
 #### STEP 4: based on previous step, further list employee name who has the max salary
 select e.name, e.salary, d.name  
     from EMPLOYEE e left join DEPARTMENT d on d.id=e.department_id  
@@ -41,3 +44,8 @@ select e.name, e.salary, d.name
       select max(e.salary) as max_salary, d.name as dept_name  
         from EMPLOYEE e left join DEPARTMENT d on d.id=e.department_id  
         group by d.name) grouped on d.name=grouped.dept_name and e.salary=grouped.max_salary;  
+    Result:  
+    CHRIS3 200 IT  
+    CHRIS2 200 IT  
+    CHRIS7 900 SALES
+    CHRIS6 600 HR
