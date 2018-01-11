@@ -47,5 +47,5 @@ select e.name, e.salary, d.name
     Result:  
     CHRIS3 200 IT  
     CHRIS2 200 IT  
-    CHRIS7 900 SALES
-    CHRIS6 600 HR
+    CHRIS7 900 SALES  
+    CHRIS6 600 HR  
