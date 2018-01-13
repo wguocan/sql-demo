@@ -29,9 +29,9 @@ insert into CW_EMP values(6, 'CHRIS6', 600, 2);
 insert into CW_EMP values(7, 'CHRIS7', 900, 3);  
 insert into CW_EMP values(8, 'CHRIS8', 800, 3);  
 #### STEP 3: list min/max/avg salary and count for each department
-  select d.name as dName, min(e.salary) as minSal, max(e.salary) as maxSal, avg(e.salary) as avgSal, count(*) as cnt   
-    from CW_EMP e left join CW_DEPT d on d.id=e.did  
-    group by d.name;  
+select d.name as dName, min(e.salary) as minSal, max(e.salary) as maxSal, avg(e.salary) as avgSal, count(*) as cnt   
+  from CW_EMP e left join CW_DEPT d on d.id=e.did  
+  group by d.name;  
 **_Result:_**  
     IT    100   200   166.67  3  
     SALES 800   900   850     2  
@@ -40,17 +40,17 @@ insert into CW_EMP values(8, 'CHRIS8', 800, 3);
 **_Use sub query:_**  
 select e.name as eName, e.salary, d.name as dName  
   from CW_EMP e left join CW_DEPT d on d.id=e.did  
-  where (d.name, e.salary) in  
-    (select  d.name as dept_name, max(e.salary) as max_salary  
+  where **(d.name, e.salary)** in  
+    **(select  d.name as dept_name, max(e.salary) as max_salary  
       from CW_EMP e left join CW_DEPT d on d.id=e.did  
-        group by d.name);  
+        group by d.name)**;  
 **_Use inner join:_**  
 select e.name as eName, e.salary, d.name as dName  
     from CW_EMP e left join CW_DEPT d on d.id=e.did    
     inner join (  
-      select max(e.salary) as maxSal, d.name as dName    
+      **select max(e.salary) as maxSal, d.name as dName    
         from CW_EMP e left join CW_DEPT d on d.id=e.did    
-        group by d.name) grouped on d.name=grouped.dName and e.salary=grouped.maxSal;  
+        group by d.name**) grouped on d.name=grouped.dName and e.salary=grouped.maxSal;  
 **_Result:_**  
     CHRIS3 200 IT  
     CHRIS2 200 IT  
