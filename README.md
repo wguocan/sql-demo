@@ -39,7 +39,7 @@ create table CW_EMP
 * HR    500   600   533.33  3  
 #### STEP 4: based on previous step, further list employees with the max salary  
 **_Use sub query:_**  
-select e.name as eName, e.salary, d.name as dName  
+&nbsp;&nbsp;select e.name as eName, e.salary, d.name as dName  
 &nbsp;&nbsp;&nbsp;&nbsp;from CW_EMP e left join CW_DEPT d on d.id=e.did  
 &nbsp;&nbsp;&nbsp;&nbsp;where (d.name, e.salary) in  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**(select  d.name as dept_name, max(e.salary) as max_salary  
@@ -47,7 +47,7 @@ select e.name as eName, e.salary, d.name as dName
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group by d.name)**;  
         
 **_Use inner join:_**  
-select e.name as eName, e.salary, d.name as dName  
+&nbsp;&nbsp;select e.name as eName, e.salary, d.name as dName  
 &nbsp;&nbsp;&nbsp;&nbsp;from CW_EMP e left join CW_DEPT d on d.id=e.did    
 &nbsp;&nbsp;&nbsp;&nbsp;inner join   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**(select max(e.salary) as maxSal, d.name as dName    
