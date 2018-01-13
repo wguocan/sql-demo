@@ -37,14 +37,14 @@ insert into CW_EMP values(8, 'CHRIS8', 800, 3);
     SALES 800   900   850     2  
     HR    500   600   533.33  3  
 #### STEP 4: based on previous step, further list employee with the max salary  
-**_Use sub query:_**
+**_Use sub query:_**  
 select e.name as eName, e.salary, d.name as dName  
   from CW_EMP e left join CW_DEPT d on d.id=e.did  
   where (d.name, e.salary) in  
     (select  d.name as dept_name, max(e.salary) as max_salary  
       from CW_EMP e left join CW_DEPT d on d.id=e.did  
         group by d.name);  
-**_Use inner join:_**
+**_Use inner join:_**  
 select e.name as eName, e.salary, d.name as dName  
     from CW_EMP e left join CW_DEPT d on d.id=e.did    
     inner join (  
